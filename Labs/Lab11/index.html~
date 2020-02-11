@@ -1,0 +1,584 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 11 | CSCI 150 (Fall 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Fall 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 150: Lab 11</h1>
+									<p><strong>Critter
+									Tournament!<br />Due:
+									10PM
+									on
+									Tuesday,
+									December 10th</strong></p>
+								</header>
+								
+								<p>
+                The purpose of this lab is to:
+                <ul>
+                	<li>Practice creating classes
+                	<li>Learn how to work with client code (aka how to "let go of the controls")
+                	<li>Build the ultimate critter!
+                </ul>
+                </p>
+                
+                <h2>Getting Started</h2>
+                
+                <p>
+                Before you begin, please create a folder called <tt>lab11</tt> inside your <tt>cs150</tt> folder. This is where you should put all files made for this lab.
+                </p>
+                
+                <h3>Getting the Files</h3>
+                
+                <p>
+                Then download the <a href="lab11files.tar">starter files</a> into
+                    this folder and unpack it.
+                </p>
+                
+                <pre>
+    # somehow get the file <a href="lab11files.tar">lab11files.tar</a> into ~/cs150/lab11 and go to this directory
+
+     <span class="typed">tar xvf lab11files.tar</span>
+
+     <span class="typed">ls</span>
+                </pre>
+                
+                <p>
+                You should now have the files <tt>color.py</tt>, <tt>critter_gui.py</tt>, <tt>critter_main.py</tt>, <tt>critter_model.py</tt>, and <tt>critter.py</tt>.  These classes implement a graphical simulation of a 2D grid world with many animals moving around in it. Different kinds of animals move in different ways; as you write each class, you are defining those differences.
+                </p>
+            </section>
+            
+            <section class="main">
+                <h2>Program Summary</h2>
+                
+                <p>
+                Before you start, let's take a look at this animal world, an example of which is shown below. You can see this world yourself by running <tt>critter_main</tt>.
+                </p>
+                
+                <pre>
+     <span class="typed">python3 critter_main.py</span>
+                </pre>
+                
+                <img src="safari.jpg" width="90%" border=1 align="center">
+                
+                <p>
+                At the beginning, you will see an empty grid with no animals.  The <tt>Go</tt> button starts the simulation; initially there is nothing to simulate so the `clock' will just run with nothing happening. The stuff goes down once you have some critters on your board. 
+                </p>
+                
+                <p>
+                On each round of the simulation, each critter is asked which direction it wants to move. On each round, each critter can move one square to the north, south, east, west, or stay at its current location. Critters move around in a world of finite size, but the world is toroidal as in the Life lab (going off the end to the right brings you back to the left and vice versa; going off the end to the top brings you back to the bottom and vice versa). 
+                </p>
+                
+                <p>
+                The critter world is divided into cells that have integer coordinates. There are 60 cells across and 50 cells up and down. The upper-left cell has coordinates (0,0), increasing <tt>x</tt> values moves you right and increasing <tt>y</tt> values move you down (similar to the <tt>picture</tt> module).
+                </p>
+                
+                <p>
+                This program may be confusing at first because  you are not writing the <tt>main</tt>  method (the client code that uses your animal objects),  therefore your code will not be in control of the overall  program's execution.  Instead, you are defining a series of  objects that become part of a larger system.  For example, you might find that you want to have one of your critters make several moves all at once---you won't be able to do that.  The only way a critter can move is to wait for the simulator to ask it for a move.  Although this experience can be frustrating, it is a good introduction to the kind of programming we do with objects. 
+                </p>
+                
+                <p>
+                  As the simulation runs, animals may collide by moving onto the same location.  When two animals collide, they battle.  The winning animal survives and the losing animal is removed from the simulation.  The following table summarizes the possible action choices each animal can make and which animal will win in each case.  To help you remember which beats which, notice that the starting letters and win/loss ratings of "roar, pounce, scratch" correspond to those of "rock, paper, scissors."  If the animals make the same choice, the winner is chosen at random. 
+                </p>
+                
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr><th rowspan="2">
+                			<td></td>
+                			<th colspan=3 align="center">Critter #2 
+                		</tr>
+                		<tr>
+                			<td></td>
+                			<th> ROAR
+                			<th> POUNCE
+                			<th> SCRATCH
+                		</tr>
+                		<tr>
+                			<th rowspan="3">
+                			Critter #1
+                			<th>ROAR
+                				<td align="center">&nbsp;random winner&nbsp;</td>
+                			<td align="center"> #2 wins</td>
+                			<td align="center"> #1 wins</td>
+                		</tr>
+                		<tr>
+                			<th>POUNCE
+                			<td align="center">#1 wins</td>
+                			<td align="center">&nbsp;random winner&nbsp;</td>
+                			<td align="center">#2 wins</td>
+                		</tr>
+                		<tr>
+                			<th>&nbsp; SCRATCH &nbsp;
+                			<td align="center">#2 wins</td>
+                			<td align="center">#1 wins</td>
+                			<td align="center">&nbsp;random winner&nbsp;</td>
+                		</tr>
+                </table>
+                </center>
+            </section>
+            
+            <section class="main">
+                <h2>Provided Files</h2>
+                
+                
+                <p>
+                Each critter you implement must have some specific state and functionality defined. In particular, each of the classes you'll write (one class per animal) will be a subclass of the following provided <tt>critter</tt> class:
+                </p>
+                
+                <pre><code>
+      # Constants for movement.
+      NORTH = -2
+      NORTHEAST = 27
+      NORTHWEST = 102
+      SOUTH = 4
+      SOUTHEAST = 99
+      SOUTHWEST = -31
+      EAST = 3
+      WEST = 19
+      CENTER = 11
+      
+      # Constants for attack
+      ROAR = 28
+      POUNCE = -10
+      SCRATCH = 55
+      
+      class Critter() :
+          # methods to be implemented 
+          def fight(self, oppInfo):
+              pass
+          def getColor(self):
+              pass
+          def getMove(self, info):
+              pass
+          def getChar(self):
+              pass
+          # this method is called by the client prog when a fight is over
+          # since the client prog knows who won the fight, when it calls
+          # this method, it passes in true for the iWon parameter if this
+          # critter won the fight, and false otherwise
+          # oppFight is the opponent's choice of fight strategy (ROAR, POUNCE, or SCRATCH)
+          # the purpose of this information is to allow you to learn strategies
+          def fightOver(self, won, oppFight):
+              pass
+                </code></pre>
+                
+                
+                <p>
+                Because your classes inherit from the superclass, they will be able to refer to the Critter defined constants. Moreover, each class must include a definition for each of the methods in the superclass (<tt>fight</tt>, <tt>getColor</tt>, <tt>getMove</tt>, <tt>getChar</tt>, and <tt>fightOver</tt>) for which it wants different (i.e. not default) behavior.  For example, below is a definition for a class called <tt>Stone</tt> that is part of the simulation.  Stone objects are displayed with the letter <tt>S</tt>, are gray in color, always stay on the current location(returning <tt>CENTER</tt> for their move), and always choose to <tt>ROAR</tt> in a battle. 
+                </p>
+                
+                <pre><code>
+      import critter
+      import color    
+      
+      class Stone(critter.Critter):
+      
+          def fight(self, oppInfo):
+              return critter.ROAR
+          
+          def getColor(self):
+              return color.GRAY
+          
+          def getMove(self, info):
+              return critter.CENTER
+      
+          def getChar(self):
+              return 'S'
+      
+          # we don't have a fightOver method here, because a 
+          # Stone doesn't do anything with this information
+          # i.e. it doesn't care to change the default behavior
+                </code></pre>
+                
+                <p> Add this code to a file called <tt>stone.py</tt>, then run <tt>critter_main</tt>. Now you should see some stones in your world. Of course, <tt>Stone</tt>s don't move, so even when you press the <tt>Go</tt> button, nothing happens, but we'll do more interesting 'animals' in due time.</p>
+                
+                <p>
+                The <tt>Critter</tt> class defines nine constants for the various directions, and three additional constants for the three types of actions.  <b>You can refer to these directly in your code</b> (<tt>critter.NORTH</tt>, <tt>critter.SOUTH</tt>, <tt>critter.ROAR</tt>, etc.) because you are inheriting from Critter (and importing critter).  Your code should not depend upon the specific values assigned to these constants, although you may assume they will always be of type <tt>int</tt>.  <b>You will lose style points if you fail to use the named constants when appropriate.</b> 
+                </p>
+            </section>
+            
+            <section class="main">
+                <h2>Critters to Implement</h2>
+                
+                <p>
+                <tt>mouse.py</tt>: 6 points<br>
+                <tt>tiger.py</tt>: 8 points<br>
+                <tt>elephant.py</tt>: 8 points<br>
+                <tt>chameleon.py</tt>: 8 points<br>
+                <tt>your own critter</tt>: 8 points<br>  
+                </p>
+                
+                <p>
+                The following are the five critter classes you will implement.  Each class must have only one constructor and that constructor must accept exactly the parameter(s) described in the table.  For random moves, each possible choice must be equally likely. 
+                </p>
+                
+                <p>
+                <b>Take some time to properly design your classes. Use static (non-instance) variables and the given constants where appropriate.</b>
+                </p>
+                
+                <h3>Mouse</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;constructor</b></td>
+                			<td>&nbsp;<tt>def __init__(self, color)</tt></td>
+                		</tr>
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;always <tt>SCRATCH</tt></td>
+                		</tr>
+                		<tr>
+                			<td width="30%"><b>&nbsp;color</b></td>
+                			<td>&nbsp;the color passed to the constructor</td>
+                		</tr>
+                		<tr>
+                			<td width="30%"><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;alternates between <tt>EAST</tt> and <tt>SOUTH</tt> in a zigzag pattern (first <tt>EAST</tt>, then <tt>SOUTH</tt>, then <tt>EAST</tt>, then <tt>SOUTH</tt>,...)</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'M'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                 
+                <p>
+                The <tt>Mouse</tt> constructor accepts a parameter representing the color in which the </tt>Mouse</tt> should be drawn.  This color should be returned each time the <tt>getColor</tt> method is called on the <tt>Mouse</tt> (so, maybe you should store it somewhere).  For example, a <tt>Mouse</tt> constructed with a parameter value of <tt>color.RED</tt> will return <tt>color.RED</tt> from its <tt>getColor</tt> method and will therefore appear red on the screen. Of course, it is the main program that will construct these mice, so you will have no control over what color each <tt>Mouse</tt> is displayed as. 
+                </p>
+                
+                <p>
+                Remember, the <tt>getMove</tt> method is called by the main program each time the critter needs to move; you can use this information to keep track of whether it is time to move East or to move South.</p>
+                
+                <h3>Tiger</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;constructor</b></td>
+                			<td>&nbsp;<tt>def __init__(self)</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;always <tt>ROAR</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;color</b></td>
+                			<td>&nbsp;alternates between <tt>color.ORANGE</tt> and <tt>color.BLACK</tt> (first <tt>color.ORANGE</tt>, then <tt>color.BLACK</tt>, then ...)</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;moves 3 turns in a row in one random direction (<tt>NORTH</tt>, <tt>SOUTH</tt>, <tt>EAST</tt>, or <tt>WEST</tt>), then chooses a new random direction and repeats</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'T'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <h3>Elephant</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;constructor</b></td>
+                			<td>&nbsp;<tt>def __init__(self, steps)</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;if opponent displays as a Tiger (with the character 'T'), then <tt>ROAR</tt>; otherwise <tt>POUNCE</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;color</b></td>
+                			<td>&nbsp;<tt>color.GRAY</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;first go <tt>SOUTH</tt> <tt>steps</tt> times, then go <tt>WEST</tt> <tt>steps</tt> times, then go <tt>NORTH</tt> <tt>steps</tt> times, then go <tt>EAST</tt> <tt>steps</tt> times (a clockwise square pattern), then repeats</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'E'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <p>
+                The <tt>Elephant</tt> constructor accepts a parameter representing the distance the Elephant will walk in each direction before 
+                changing direction.  For example, an <tt>Elephant</tt> constructed with a parameter value of 8 will walk 8 steps south, 8 steps 
+                west, 8 steps north, 8 steps east, and repeat.  You can assume that the value passed for <tt>steps</tt> is at least 1. 
+                </p>
+                
+                <p>
+                For the <tt>fight</tt> method, you need to determine your opponent's display character. Every time a critter's <tt>fight</tt> method is called, it is passed a parameter <tt>oppInfo</tt> of type <tt>CritterInfo</tt> that provides useful information about the current opponent, including its display character. In particular, a critter's <tt>CritterInfo</tt> contains the following fields:
+                </p>
+                
+                <pre><code>
+    x -- the current critter's x coordinate
+    y -- the current critter's y coordinate
+    width -- the width of the simulation world
+    height -- the height of the simulation world
+    char -- the current critter's display character
+    color -- the current critter's display color
+    getNeighbor(direction) -- a method that, when called with a parameter 
+       representing one of the direction constants, returns the <em>name</em> of the class 
+       (NOT the display character) of the critter in that location
+       (i.e. the location that is one space in the given direction of the current critter.)
+                </code></pre>
+                
+                <p>Thus, in the <tt>fight</tt> method, the code <tt>oppInfo.char</tt> represents the opponent critter's display character, and <tt>oppInfo.color</tt> its color. Slightly less useful now, the code <tt>oppInfo.getNeighbor(critter.NORTH)</tt> would return the string 'Stone' if there is a stone to the north of your opponent, and the string '.' if there is no neighbor to the north.
+                </p>
+                
+                <p>Note that a every time a critter's <tt>getMove</tt> method is called, it is passed a parameter <tt>info</tt> also of type <tt>CritterInfo</tt>; this time, the information being passed in is about the current (self) critter, not of an opponent. Once again, some of the information (for example, knowing what neighbors you have in your immediate vicinity) may help you make better movement choices (i.e. avoidance or attack.)
+                </p>
+                
+                <!--
+                <p>
+                Each time a critter is asked to move (each time the <tt>getMove</tt> method is called by the simulator), the critter is passed a 
+                parameter <tt>info</tt> of type <tt>CritterInfo</tt> that provides useful information; your critter may wish to make use of this information to 
+                guide its movement behavior.  For example, you can find out the critter's current <tt>x</tt> and <tt>y</tt> coordinates by calling <tt>info</tt>'s <tt>getX</tt> 
+                and <tt>getY</tt> methods (that is, <tt>info.getX()</tt>, <tt>info.getY()</tt>), while the <tt>getWidth</tt> and <tt>getHeight</tt> methods return information about the size of the simulation world.  
+                You can find out what is around the critter by calling <tt>getNeighbor</tt> and passing one of the direction constants as a 
+                parameter.  Whatever character is at that location will be returned (and <tt>'.'</tt> if the location is empty). 
+                </p>
+                
+                <div class="boxed">
+                	<pre><tt>
+                 public interface CritterInfo {
+                     public int getX();
+                     public int getY();
+                     public int getWidth();
+                     public int getHeight();
+                     public char getNeighbor( int direction );
+                 }
+                </pre>
+                </tt>
+                </div>
+                -->
+                
+                
+                <br>
+                <h3>The Chameleon</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;constructor</b></td>
+                			<td>&nbsp;<tt>def __init__(self)</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;fighting behaviour</b></td>
+                			<td>the strategy that beats the most used strategy against the chameleons so far (not just this one chameleon)</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;color</b></td>
+                			<td>the color used by this particular chameleon's last opponent</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;if the chameleons have lost the majority of their fights so far, then use avoidance. Otherwise, move towards opponents. </td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>'C'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <p>
+                The <tt>Chameleon</tt> will try to emulate the appearance of its most recent (losing) opponent by displaying the opponent's color. (You can get this information from the <tt>fight</tt> method's <tt>oppInfo</tt> parameter.) 
+                As its fighting behavior, a <tt>Chameleon</tt> will use the strategy that beats (and is thus different from) the most pas opponents of chameleons; that is, the chameleon 'species' needs to keep statistics on how often each strategy is used against a chameleon (think: static (i.e. non-instance) variables) and play the counter-strategy to the most-used one. You can obtain information about the outcome of each battle from the <tt>fightOver</tt> method, which is called at the end of each and every battle, and tells each critter whether it won or lost the battle (<tt>won</tt> is true if the former, false if the latter) and what its opponent's fighting strategy was (<tt>oppFight</tt> is one of ROAR, POUNCE, or SCRATCH).
+                Finally, a chameleon's movement strategy is based on the chameleon species' success rate: if it is not faring well (if chameleon's have lost at least half their battles) then it will try to avoid other critters, that is, it moves away from adjacent critters if possible, or stays in the same spot if surrounded. If chameleons are winning over half their battles then they become agressive and move towards other critters. You can find out which critters (if any) are to your north, south, east, west, north-east, north-west, south-east, and south-west through the <tt>info</tt> parameter (of type <tt>CritterInfo</tt>, described above) that is passed to the <tt>getMove</tt> method. For example, <tt>info.getNeighbor( critter.NORTH )</tt> will return the class name (as a string) of the critter to the North, and <tt>'.'</tt> if there is none.
+                </p>
+                
+                <h3>The &lt;YourName&gt Creature</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;constructor</b></td>
+                			<td>&nbsp;<tt>def __init__(self)</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;you decide</tt></td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;color</b></td>
+                			<td>&nbsp;you decide</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;you decide</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;you decide</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <p>
+                You will decide the behaviour of the <tt>&lt;YourName&gt;</tt> class.  (Your constructor must accept no parameters as shown above.)   Remember, the format for naming your class should be your first name followed by your last initial.  My critter would be called <tt>AdamE</tt> in the file <tt>adame.py</tt>.  <b>If you work with a partner, you need to <u>each submit a separate <tt>YourName</tt> critter.</u></b>
+                </p>
+            </section>
+            
+            <section class="main">
+                <h2>Your Own Critter Class</h2>
+                
+                <p>
+                Part of your grade will be based upon writing creative and non-trivial behaviour in your critter class.  The following are some guidelines and hints about how to write an interesting critter. 
+                </p>
+                
+                <p>
+                Your critter's fighting behavior may want to utilize the parameter sent to the <tt>fight</tt> method, <tt>oppInfo</tt>, which tells you how your opponent displays themselves (<tt>oppInfo.char</tt> is their display character, <tt>oppInfo.color</tt> is their display color, and <tt>oppInfo.getNeighbor(critter.CENTER)</tt> is their class name; for a Mouse these are <tt>'M'</tt>, <tt>Color(r=133, g=132, b=118)</tt>, and <tt>"Mouse"</tt>, respectively.)
+                </p>
+                
+                <p>
+                You can make your critter return any character you like from its <tt>getChar</tt> method and any color you like from the <tt>getColor</tt> method.  In fact, critters are asked what display color and character to use on each round of the simulation, so you can have a critter that displays itself differently over time.  Keep in mind that the <tt>getChar</tt> character is also passed to other animals when they battle your critter; you may wish to strategize to try to fool other animals. 
+                </p>
+            </section>
+            
+            <section class="main">
+                <h2>Tournamente!</h2>
+                <p>
+                Once you have all finished your lab, we will host a Critter tournament in class consisting of battles in the following format: Four students' critter classes will be placed into the simulator world along with the other standard animals (Stone, Elephant, Tiger, and Mouse), with 25 of each animal type.  The simulator will be started and run until no significant activity is occurring or until 1000 moves have passed, whichever comes first.  The student whose critter class has the higher score (other critters defeated + your critters alive) wins the battle. The winner of the tournament will gain fame and fortune!
+                </p>
+            </section>
+            
+            <section class="main">
+                <h2>Part 3 - Wrap Up</h2>
+                
+                <p>As with every lab, your last job prior to submission is to complete a brief write-up by <a href="https://forms.gle/TcsnA5JkGY6mwJ2i9">filling out a Google Form</a>.</p>
+              </section>
+          
+          <section class="main">
+                
+                <h2>Handin</h2>
+                
+                <p> You now just need to electronically handin all your files. Everyone needs to handin the Google Form, and if you worked with a partner, only one person in your group needs to submit your files.  As a reminder
+                </p>
+                
+                <pre> 
+       % <span class="typed">cd</span>             # changes to your home directory
+       % <span class="typed">cd cs150</span>       # goes to your cs150 folder
+       % <span class="typed">handin</span>         # starts the handin program
+                        # class is 150
+                        # assignment is 10
+                        # file/directory is lab10
+       % <span class="typed">lshand</span>         # should show that you've handed in something
+                </pre>
+                
+                <p> You can also specify the options to handin from the command line
+                </p>
+                
+                <pre> 
+       % <span class="typed">cd ~/cs150</span>     # goes to your cs150 folder
+       % <span class="typed">handin -c 150 -a 10 lab10</span>
+                </pre>
+                
+                <br>
+                <h4>File Checklist</h4>
+                <br/>
+                
+                You should have submitted the following files:
+                <pre>
+       mouse.py
+       tiger.py
+       elephant.py
+       chameleon.py
+       your_first_name_followed_by_initial_of_last_name.py
+                </pre>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+											  <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

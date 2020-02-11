@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tips & Handouts | CSCI 150 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Spring 2019, Oberlin College)</a>
+								</header>
+
+							<!-- Content -->
+								<section class="main">
+									<header class="main">
+										<h1>CSCI 150 Tips and Handouts</h1>
+									</header>
+									
+									<p>We will post general tips and handouts on this page. Please check often to make sure you do not miss any important information.</p>
+
+									<h2>Lab Feedback and Grades</h2>
+									<p>You will receive feedback and grades for each lab assignment about one week after it is turned in. To view the feedback and grades for your lab assignments, please go to: <a href="https://mail.cs.oberlin.edu/">https://mail.cs.oberlin.edu/</a> and login with your <u>same username and password as the lab machines</u>.  Grades (and feedback) will <b>also</b> be posted to Blackboard.</p>
+
+									<h2>Problems with Firefox on the Lab Machines</h2>
+									<p>If you cannot get Firefox to load on the lab machines, it might not have closed properly the last time you used it, and it thinks that it is still open.  To fix this problem, open up Terminal, and type in the following commands (without the %):</p>
+
+<pre>
+    % <span class="typed">cd</span>
+    % <span class="typed">rm -rf .mozilla</span>
+                                </pre>
+
+									<p>Please make sure that you do <strong><i><u>NOT</u></i></strong> put a space between the period and the mozilla in the second command.</p>
+
+
+
+									<h2>General Tips</h2>
+									<ul>
+                                        <li>If you aren't sure whether you should start with CSCI 140, CSCI 150, or CSCI 151, please check out <a href="http://www.cs.oberlin.edu/classes/placement/">this guide</a>!
+                                        <li>The <a href="http://www.cs.oberlin.edu/">Computer Science Department</a> provides a page on <a href="http://occs.cs.oberlin.edu/classes/problem-solving-tips/">General Problem Solving Tips</a></li>
+									</ul>
+
+									<h2>Slides from Class</h2>
+									<p>The course slides are posted on <a href="https://blackboard.oberlin.edu">Blackboard</a> under "Slides and Example Code"</p>
+
+									<h2>Example Code from Class</h2>
+									<p>The example code demonstrated in class is also posted on <a href="https://blackboard.oberlin.edu">Blackboard</a> under "Slides and Example Code"</p>
+
+                                    <h2>Installing Python 3 (for Mac)</h2>
+                                    <ul>
+                                        <li>Go <a href="http://www.python.org/getit/">here</a> to get Python 3.</li>
+                                        <li>Download Python 3.7.2</li>
+                                        <li>Double click on the Python.mpkg file (inside of the .dmg file you just downloaded); you'll be greeted with a screen that looks something like this:
+                                            <img src="setup/img1.png"/>
+                                        </li>
+                                        <li>Follow the installation instructions.</li>
+                                        <li>You now have Python on your computer! Yay! </li>
+                                    </ul>
+
+					<h2>Installing Python 3 (for Windows)</h2>
+                                    <ul>
+                                        <li>Go <a href="http://www.python.org/getit/">here</a> to get Python 3.</li>
+                                        <li>Download Python 3.7.2</li>
+                                        <li>Double click on the python-3.7.2.exe file that you just downloaded; you'll be greeted with a screen that looks something like this:
+                                            <img src="setup/windows.png"/>
+                                        </li>
+					     <li><strong>Make sure to check the checkbox next to "Add Python 3.7 to PATH", or else you won't be able to run Python programs from Powershell (the Windows version of Terminal)</strong></li>
+                                        <li>Follow the installation instructions.</li>
+                                        <li>You now have Python on your computer! Yay! </li>
+                                    </ul>
+
+
+                                    <h2>Installing Atom</h2>
+                                    <ul>
+                                        <li>Click <a href="https://atom.io">here</a> to download Atom.</li>
+                                        <li>Follow the installer's instructions!</li>
+                                        <li>To run Atom, you can just find it in your applications, by searching on spotlight, etc! </li>
+                                   
+                                    </ul>
+
+
+                                    <h2>Using Terminal (on a Mac)</h2>
+                                    <p>Type Terminal into spotlight, like this:</p>
+                                    <img src="setup/terminal.png"/>
+                                    <p>Alternatively, you can go to Applications>Utilities>Terminal. To run Python programs, type "python3 progName.py", or whatever the name
+                                    of your program is. It'll run as such.</p>
+                                    <img src="setup/ex.png"/>
+
+					 <h2>Using Powershell (the Terminal alternative on Windows)</h2>
+                                    <p>Click on the Start Menu button, and type Powershell</p>
+					 <p>Select the "Windows Powershell" application (<strong>not</strong> "Windows Powershell ISE")</p>
+                                    <img src="setup/startmenu.png"/>
+                                    <p>To run Python programs, type "python3 progName.py", or whatever the name of your program is. It'll run as such.</p>
+                                    <img src="setup/powershell.png"/>
+
+
+                                    <h2>Submitting labs remotely (on a Mac)</h2>
+                                    <ul>
+                                        <li>Open Terminal.</li>
+                                        <li>To copy files onto the CS server: if your files are in the directory "lab1" on your current computer, you can type: "scp -r lab1 your_username@cs.oberlin.edu:~/cs150" to
+                                        copy all of the files into your CS150 folder. You can replace lab1 with whatever the name of your path is.</li>
+                                        <li>Type "ssh your_username@cs.oberlin.edu". Replace your_username with the username you use to log into CS machines.</li>
+                                        <li>Type "cd cs150", or whatever the name of your 150 directory is.</li>
+                                        <li>Assuming lab1 is already in there, type "handin".</li>
+                                        <li>You should be prompted for a class number, assignment number, and the directory of your submission. Your class number is <b>150</b>, your
+                                        assignment number is <b>1</b> (<u>not</u> 01, lab01, or lab1), and the directory of your submission is whatever you named it! So,
+                                        usually just "lab1".</li>
+                                        <li>You should get confirmation that the lab was successfully handed in. You can also type "lshand" into the terminal to see your
+                                        submitted assignment.</li>
+                                        <img src="setup/term2.png"/>
+                                        <li>To exit OCCS, type "exit".</li>
+                                    </ul>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Course Info</a></li>
+										<li><a href="schedule.html">Schedule</a></li>
+										<li><a href="syllabus.html">Syllabus</a></li>
+										<li><a href="handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+							<div id="contact"/>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

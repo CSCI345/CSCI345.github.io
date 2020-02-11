@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PreLab 04 | CSCI 150 (Fall 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Spring 2019, Oberlin College)</a>
+							</header>
+
+							<section class="main">
+              	<header align="center">
+									<h1>CSCI 150: PreLab 4</h1>
+									<p><strong>Pictures
+									and
+									Functions<br />Due:
+									9AM
+									on
+									Wednesday,
+									September 25th</strong></p>
+								</header>
+
+								<p>In this prelab you will formulate some of the ideas necessary to complete Lab 04. Please turn in your solution on <a href="https://www.gradescope.com/">Gradescope</a>.  You can either turn it in as a PDF (e.g., saving a document as a PDF in Word), take a picture (e.g., with a smartphone), or scan it (e.g., at the library) to hand it in.  Please remember, no late prelabs allowed!</p>
+
+								<h2>Reading</h2>
+								<p>Read this Scientific American article about <a href="http://www.scientificamerican.com/article/how-diversity-makes-us-smarter/">how diversity makes us smarter</a>.  If you're so inclined, you should also check out the following embarrassing example of what can happen when your development and testing teams aren't diverse:
+                <a href="http://content.time.com/time/business/article/0,8599,1954643,00.html">Link</a> 
+                </p>
+								<div class="box">
+								  <b>1.</b> Did you do the reading?  (Yes or no will suffice.)
+								</div>
+
+<!--								<h2>Method Practice</h2>
+								<div class="box">
+								  <b>2.</b> What is the output of the following program?
+
+								  <pre><code>
+    def main() : 
+      blarg(5)
+      blorf(3)
+    
+    def blarg(x) :
+      print(x*x)
+      print(x)
+    
+    def blorf(y) :
+      blarg(y+1)
+      print(y)
+      blarg(y-1)
+
+    main()
+								  </code></pre>
+								  <br/>
+
+								  <b>3.</b> What is the output of the following program?
+								  <pre><code>
+    def main() :
+      x = 2, y = 7
+      print(x, y, end="")
+      x = blunk(x, y)
+      print(x, y, end="")
+    
+    def blunk(y, x) :
+      print(x, y, end="")
+      y = y * y
+      x = x//2
+      print(x, y, end="")
+      return x*y
+
+    main()
+								  </code></pre>
+								</div>-->
+
+<h2>Primes</h2>
+                                                                <p>As you may know, a number <tt>x</tt> is said to be <em>prime</em> if <tt>x</tt> is at least 2, and the only proper factors of <tt>x</tt> are itself and 1.  So the first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, etc.   4 isn't prime, since it is divisible by 2.  Same goes for 6 and 8.  9 is out thanks to 3.  And so on.  There are a lot of primes.  More precisely, there are infinitely many primes.</p>
+
+                                                                <p>A <em>twin prime</em> is a pair of prime numbers that differ by exactly 2.  So (3,5), (5,7), (11,13), (17,19) and (29, 31) are all twin primes.  Note that not every prime is part of a twin prime.  It is conjectured that there are infinitely many twin primes too, but no one knows for sure.</p>
+
+                                                                <table>
+                                                                        <tbody>
+
+<tr>
+
+        <td width="200px"><h4>Describe the Problem:</h4></td>
+
+        <td>The problem you will solve on your lab is as follows.
+
+                <br/><br/>
+
+                <b>Input:</b> An integer <tt>n</tt> from the user that represents the number of primes to print out.
+
+                <br/>
+
+                <b>Output:</b> The first <tt>n</tt> primes, and the number of twin primes amongst these.
+
+        </td>
+
+</tr>
+
+
+<tr>
+
+        <td width="200px"><h4>Understand the Problem:</h4></td>
+
+        <td>If the user enters 13 then the output should be
+
+                <br/><br/>
+
+                <pre>
+        The first 13 primes are:
+        2 3 5 7 11 13 17 19 23 29 31 37 41
+        Amongst these there are 5 twin primes.
+
+                </pre>
+
+
+                Note that (41, 43) is a twin prime, but we didn't count it since 43 wasn't amongst the first 13 primes.
+
+        </td>
+
+</tr>
+
+
+<tr>
+
+        <td width="200px"><h4>Design an Algorithm:</h4></td>
+
+        <td>Write pseudocode to solve this problem. You should decompose your main algorithm into small manageable chunks. For example, you should
+                                                                                                <ul>
+
+                        <li>design code that takes an
+                        integer <tt>x</tt> and determines
+                        whether <tt>x</tt> is prime. E.g. it should
+                        should be <tt>False</tt> for 30,
+                        but <tt>True</tt> for 31.
+
+                        <li>make repeated use of this code to generate the first <tt>n</tt> primes.
+                                                                                                </ul>
+                                                                                        </td>
+
+</tr>
+                                                                        </tbody>
+                                                                </table>
+
+                                                                <div class="box">
+                                                                        <b>2.</b> Suppose <tt>x</tt> and <tt>f</tt> are both integers.  Find a boolean expression which is true if and only if <tt>f</tt> is a proper factor of <tt>x</tt>.  That is, the boolean expression should be true if <tt>x</tt> is evenly divisible by <tt>f</tt>, and false otherwise.  For example, if <tt>x</tt> and <tt>f</tt> are 18 and 6 respectively, then the expression should evaluate to true, since 6 goes evenly into 18.  For 18 and 5, however, the expression should evaluate to false, since 5 doesn't go evenly into 18.
+                                                                        <br/><br/>
+                                                                        3. Use the expression from question 5 to create pseudocode for an algorithm that determines whether <tt>x</tt> is prime.
+                                                                </div>
+
+								<h2>Image Manipulation</h2>
+								<p>In this portion of the lab you'll create a nifty program that reads in an image and does a sequence of modifications to that image, as specified by the user.  Things like negating the image, blurring it, changing the contrast, etc.</p>
+								
+								<table>
+								  <tbody>
+								    <tr>
+								      <td width="200px"><h4>Describe the Problem:</h4></td>
+								      <td>Your program should prompt the user to enter the filename of an image to edit.  It should then repeatedly prompt them for filters to apply, and show the cumulative effect of these filters on the specified image.</td>
+								     </tr>
+								    <tr>
+								      <td width="200px"><h4>Understand the Problem:</h4></td>
+								      <td><img src="crayons.bmp" alt="original" border=4>
+									<br/><br/>
+									
+									Consider the image of crayons above. There are numerous transformations we might apply to this image. For the lab, you'll be creating a program capable of the following operations:
+									<ol>
+									  <li>Make Negative
+									  <li>Make Grayscale
+									  <li>Posterize
+									  <li>Flip Horizontally
+									  <li>Scroll Horizontally
+									  <li>Zoom
+									  <li>Blur
+									  <li>Your Own Effect
+									</ol>
+
+									<br/><br/>
+									Examples of these operations are given below.
+
+									<table id="exampleTable">
+									<tr>
+									    <td>Original Image:</td>
+									    <td></td>
+
+									</tr>
+									<tr>
+									    <td><img src="crayons.bmp" alt="original" border=4></td>
+									    <td></td>
+									</tr>
+
+									<tr>
+									    <td>Negative:</td>
+									    <td>Greyscale:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="invert.bmp" alt="flip" border=4></td>
+									    <td><img src="gray.bmp" alt="mirror" border=4></td>
+									</tr>
+
+									<tr>
+									    <td>Flip:</td>
+									    <td>Scroll:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="mirror.bmp" alt="scroll" border=4></td>
+									    <td><img src="scroll.bmp" alt="negative" border=4></td>
+									</tr>
+
+									<tr>
+									    <td>Zoom:</td>
+									    <td>Blur:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="zoom.bmp" alt="zoom" border=4></td>
+									    <td><img src="blur.bmp" alt="poster" border=4></td>
+									</tr>
+
+									<tr>
+									    <td>Posterize:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="poster.bmp" alt="scroll" border=4></td>
+									</tr>
+									
+									<tr>
+									    <th colspan="2"><b>Other Ideas</b></th>
+									</tr>
+
+									<tr>
+									    <td>Find Edges:</td>
+									    <td>Tiled:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="edges.bmp" alt="find edges" border=4></td>
+									    <td><img src="tiled.bmp" alt="tiling" border=4></td>
+									</tr>
+
+									<tr>
+									    <td>Shear:</td>
+									    <td>Bizarre:</td>
+									</tr>
+									<tr>
+
+									    <td><img src="shear.bmp" alt="shear" border=4></td>
+									    <td><img src="psych.bmp" alt="bizarre" border=4></td>
+									</tr>
+
+									</table>
+								      </td>
+								    </tr>
+								    
+								    <tr>
+								      <td width="200px"><h4>Design an Algorithm:</h4></td>
+								      <td>You will want to write pseudocode before you start writing code.  Details for some of these operations are given below.
+								      <br/><br/>
+
+								      <ul>
+									<li><b>Negative:</b> The negative of an image is creating by inverting each color channel.  So if the red value of a pixel were 255, it should become 0.  If it were 254, it should become 1, and so on, down to 0, which should become 255.  Similarly for green and blue.</li>
+									<br/>
+									
+									<li><b>Grayscale:</b> Shades of gray have the same red, green and blue value.  To convert an image to grayscale, you want to set the red, green and blue values all to the average value of the three channels of the original pixel.</li>
+									<br/>
+									
+									<li><b>Posterize:</b> A typical pixel can have one of 256 value for each color channel.  In a posterized image, this number is drastically decreased.  Each color channel value should be rounded to the nearest multiple of 32.</li>
+									<br/>
+
+									<li><b>Scrolling:</b> Scrolling should ask the user to specify some number of pixels, and should then shift the image that many to the right.  Pixels that would fall off the edge of the image should wrap around to the other size.  Modular arithmetic may come in handy here.</li>
+									<br/>
+									
+									<li><b>Zoom:</b> This method result in an image of the same size as the original, but consist of the center of the image blown up by a factor of 2.  So if the image has width w and height h, zooming should expand the middle w/2 by h/2 region to fill the whole picture.</li>
+									<br/>
+									
+									<li><b>Blur:</b> When you blur an image, you set the color of each pixel to be the average of the 9 pixels in the 3 x 3 square centered at that pixel (i.e. the average of the original pixel and its original 8 neighbors).  You'll probably want to create a new Picture object; otherwise, you'll be adjusting pixel values that you'll need for subsequent calculations.  Be careful at the borders, not all pixels have 8 neighbors!</li>
+								      </ul>
+								      
+								      </td>
+								    </tr>
+								   </tbody>
+								  </table>
+
+
+								  In the lab, you'll be writing a program that performs many of the above transformations on images. In preparation, you'll be generating pseudocode to perform some of these operations.  As an example, we consider the task of removing all red from an image, and give a pseudocode solution is given below.  Give your own pseudocode solutions to the remaining problems.
+								  <br/><br/>
+
+								  <em>Hints:</em>
+								  <ul>
+								    <li>For some of these operations, you may want to create a new image rather than by simply modifying the existing image.  You may assume you can generate a copy of an image.</li>
+								    <br/>
+								  
+								    <li>You can not change the position of a pixel.  You can, however, read the r, g and b values for any pixel, and you can set the r, g and b values of any pixel.</li>
+								  </ul>
+								     
+
+								  <div class="box">
+								    <b>Ex.</b> Remove all red from an image.
+
+								    <pre>
+  <b>Sample answer:</b>
+
+  loop over x values from 0 to W - 1 inclusive (You can assume W is the width)
+      loop over y values from 0 to H - 1 inclusive (You can assume H is the height)
+	  change the red value of the pixel at (x,y) to 0
+								    </pre>
+
+
+								    <b>4.</b> Negate the image.
+								    <br/><br/>
+
+								    <b>5.</b> Convert the image to grayscale.
+								    <br/><br/>
+
+								    <b>6.</b> Scroll the image to the right by d pixels.
+								    <br/><br/>
+								  </div>
+								 
+
+								<h2>Honor Code</h2>
+								<p style="text-align:justify"> If you followed the Honor Code in this assignment, write the following sentence attesting to the fact at the top of your homework.</p>
+
+								<blockquote>
+								  <p class="centered"> I affirm that I have adhered to the Honor Code in this assignment.</p>
+								</blockquote>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+											  <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

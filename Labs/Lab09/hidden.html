@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 9 | CSCI 150 (Fall 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Fall 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 150: Lab 9</h1>
+									<p><strong>Scavenger
+									Hunt!<br />Due:
+									10PM
+									on
+									Tuesday,
+									November 19th</strong></p>
+								</header>
+								
+								<p>
+                Sweet!  The last step!
+                </p>
+                
+								<h2>Part 3 - Steganography</h2>
+
+								<tt>steganography.py</tt>:
+								13 pts<p>
+                
+                <p>
+                Steganography is the process of hiding information in an image.  If you haven't already, click here and save the file <a href="fruit.bmp">fruit.bmp</a> to your working folder.  Check it out.  Neat, huh?  A picture of fruit.  Just a regular old harmless bowl of fruit.  Or is there more here than meets the eye?    
+                </p>
+                
+                <p>
+                Actually, there is.  Embedded in this image is data.  Recall that every pixel in an image has a red, a green and a blue channel, and each channel can have one of 256 values (0 through 255).  If we were to write these numbers in binary, we'd need 8 bits: 00000000 in binary is 0, 00000101 in binary is 5, and the biggest binary number we can write, 11111111, is 255.    
+                </p>
+                
+                <p>
+                Suppose we changed the two low order bits (the right-most bits).  How much might this change the value of an 8 bit number?  Worst case, we switch those last two bits from 00 to 11 or vice-versa.  This is a change of 3.  Out of 256 possible values, this is a change of just over 1%, and again, that's in the worst case.  So this change is pretty insignificant.  You typically would have to look very closely to notice it, if you could see it at all.    
+                </p>
+                
+                <p>
+                What I've done is alter the two least bits of each channel to encode data.  I could have encoded text, but here I've simply encoded another image.  If I wanted one pixel to have a lot of red, I set the two low bits to 11.  If I wanted a fair bit of red, just a touch or red, or no red at all, I'd use 10, 01, or 00 respectively.   
+                </p>
+                
+                <p>
+                For example, if a pixel in the fruit image has a red value of 10110101, then all you really care about is that the value ends in 01, and thus indicates that the corresponding pixel in my secret image uses the second lowest possible red value.  To convert this to the appropriate value, the first thing you should do is zero out the 6 high order bits.  So 10110101 should become 00000001.  Of course, you don't have direct access to the bits here.  <em>Don't explicitly convert to binary at any point in your program!</em>  Instead, figure out what standard arithmetic and modular operations are needed to implement the conversion.  In the example above, the original binary number represents 181, and you'd like it changed to a 1.  The numbers 182 and 186 should both be changed to 2's, the numbers 183, 187, and 191 should each be changed to 3's, etc.  
+                </p>
+                
+                <p>
+                Write a program called <tt>steganography.py</tt> that reads in the image of the fruit and effectively zeroes out the 6 high order bits for every color channel of every pixel.
+                </p>
+                
+                <p>
+                Once you've thrown out the high order bits, you could display the image, but it would look pretty dark.  Your brightest pixels would have RGB values of at most 3, so you probably wouldn't see much.  Therefore, we'll amplify the color by shifting the bits we have 6 bits to the left.  So 00000001 should become 01000000.  How do you do this bit shift?  Multiply by 2^6 = 64.
+                
+                You'll know if it worked.
+                </p>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../announce.html">Announcements</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+											  <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

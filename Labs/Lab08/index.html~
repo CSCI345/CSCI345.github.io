@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 07 | CSCI 345 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html"
+								class="logo"><strong>CSCI
+								345</strong>:
+								Computers
+								and
+								the
+								Physical
+								World (Spring 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 345: Lab 7</h1>
+									<p><strong>Motors<br />Due:
+									10PM
+									on
+									Monday,
+									</strong></p>
+								</header>
+								
+								<p>In
+								this
+								lab,
+								you
+								should
+								learn:</p>
+                <ul>
+                	<li>How to control different kinds of
+                	  motors</li>
+			<li>How to teach yourself to use a new kind of
+			input device</li>
+                   </ul>
+
+
+		<p>To complete this lab, you will need:
+		  <ul>
+		    <li>A computer.
+		    <li>An arduino.
+		    <li>A USB cable to connect your arduino to your computer.
+		    <li>A 6V motor
+		    <li>A PN2222 Transistor
+		    <li>A 1N4001 diode.
+		    <li>A servo motor.
+		    <li>A 10Ωk potentiometer.
+		    <li>100 µF capacitor.
+		    <li>L293D IC chip.
+		    <li>Button.
+		    <li>5V Stepper motor.
+		    <li>A 270Ω resistor.
+		    <li>A breadboard.
+		    <li>Wires.
+		      </ul>
+ 	      <section class="main">
+                  <h2>Part 1 - DC Motor</h2>
+
+First, follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors">this guide</a>
+		    to use control a DC motor with your arduino.<p>
+
+              <section class="main">
+                <h2>Part 2 - Servo Motor</h2>
+                
+Follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors">
+		  this guide</a> to control a servo motor with your arduino.<p>
+          </section>
+          
+          <section class="main">
+                <h2>Part 3 - DC Motor but backwards</h2>
+
+Follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing/overview">this
+		  tutorial</a> to set up your DC motor so it can run
+		both forwards and backwards. <p>
+
+	  </section>
+
+	            <section class="main">
+                <h2>Part 4 - Stepper Motor</h2>
+
+Follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-16-stepper-motors">this
+		  tutorial</a> to set up your DC motor so it can run
+		both forwards and backwards. <p>
+
+ </section>
+
+	  <section class="main">
+          <h2>Part 5 - Pick an input</h3>
+Choose an input device <b>that we have not yet used in a lab</b>.
+Find a tutorial on how to use that input device, and follow the
+tutorial to set it
+up.  <a href="https://learn.adafruit.com/category/learn-arduino">Adafruit</a>
+is a good place to look for tutorials, as
+is <a href="https://learn.sparkfun.com/">sparkfun</a>
+and <a href="https://www.instructables.com/id/Arduino-Projects/">instructables</a>.
+Your kit also came with a CD that contains guides for all of the parts
+it came with.  Lastly, googling "arduino" and the name of your input
+device will probably turn up something.<p><p>
+</section>
+	            <section class="main">
+
+                <h2>Part 6 - Put it together and get creative</h2>
+
+Take whatever input device you chose, and use it to control one of
+		the motors.  You may use any other output device that
+		you wish for this project (LEDs, buzzer, etc). <p>
+
+ </section>
+
+          <section class="main">
+                <h2>Handin</h2>
+                
+                <p> You will submit your assignment by posting a
+                comment on the piazza thread for lab 7.  Your post
+                should include a link to the a video of you demoing
+                your program, and a link to a github repository that
+                contains your arduino code.
+                </p>
+                
+                <hr/>
+                <small>C. Taylor</small>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+                        <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

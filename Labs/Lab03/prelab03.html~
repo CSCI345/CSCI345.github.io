@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PreLab 03 | CSCI 150 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Spring 2019, Oberlin College)</a>
+							</header>
+
+							<section class="main">
+              	<header align="center">
+									<h1>CSCI 150: PreLab 3</h1>
+									<p><strong>Visualizations<br />Due: 9AM on Wednesday, February 20</strong></p>
+								</header>
+
+								<p style="text-align:justify">
+									In this prelab you will formulate some of the ideas necessary to complete Lab 03. Please turn in your solution on <a href="https://www.gradescope.com/">Gradescope</a>.  You can either turn it in as a PDF (e.g., saving a document as a PDF in Word), take a picture (e.g., with a smartphone), or scan it (e.g., at the library) to hand it in.  Please remember, no late prelabs allowed!
+								</p>
+
+								<hr/>
+
+								<h2>Reading</h2>
+
+								<p>Read about one of the first Computer Scientists, <a href="http://www.biography.com/news/ada-lovelace-facts-book-sydney-padua">Ada Lovelace</a>, who predated computers by a century. </p>
+								<div class="box">
+									<b>1.</b> Did you do the reading?  (Yes or no will suffice.)
+								</div>
+
+								<hr/>                
+								
+								<h2>Picture This</h2>
+								<p>In the lab proper, you'll be using graphical primitives (rectangles, circles, lines, etc.) to create an image of your own choosing.</p>
+
+								<div class="box">
+								  <b>2.</b> For now, sketch a picture that you'll use as a blueprint for your eventual picture program.  Some past projects: a hippo birthday party; a cityscape; a unicorn fighting a robot; happy flowers.  Your sketch should be on it's own sheet of unlined (or lined) paper, and should indicate color as well as form.  You can use markers, pens, pencils, watercolors, etc.  You aren't expected to be Michelangelo (or any other TMNT for that matter), but you shouldn't just make a smiley face and call it a day.  Unless it's an <i>undeniably awesome</i> smiley face.  
+								</div>
+
+								<hr/>                
+								
+								<h2>Walk Like an Egyptian</h2>
+								<table>
+									<tbody>
+										<tr>
+											<td width="200px"><h4>Describe the Problem</h4></td>
+											<td>In lab you'll be creating a program that draws a pyramid of bricks based on user input.
+												<br/><br/>
+												<b>Input:</b> An integer for the width of the image (<tt>width</tt>) and the height in bricks of the pyramid (<tt>n</tt>).
+												<br/>
+												<b>Output:</b> An image of a pyramid that is <tt>n</tt> bricks tall in a square canvas <tt>width</tt> wide (and thus <tt>width</tt> tall).
+											</td>
+										</tr>
+
+										<tr>
+											<td width="200px"><h4>Understand the Problem</h4></td>
+											<td>Here are three sample outputs for your reference. Notice that the pyramid doesn't necessarily fill the entire canvas to the right and to the top; if the canvas width is not evenly divisible by the number of bricks, then there will be extra blank space. (A question for you to ponder: why is there so <i>much</i> blank space in the third example? Seems like you could fit lots of extra bricks both to the right and up top...)
+												<br/><br/>
+												<b>400 x 400, 3 bricks.</b>
+												<br/>
+												<img src="pyramid3.bmp" alt="3 bricks" border=0>
+												<br/><br/>
+
+												<b>400 x 400, 17 bricks.</b>
+												<br/>
+												<img src="pyramid17.bmp" alt="17 bricks" border=0>
+												<br/><br/>
+
+												<b>400 x 400, 123 bricks.</b>
+												<br/>
+												<img src="pyramid123.bmp" alt="123 bricks" border=0>
+												<br/><br/>
+											</td>
+										</td>
+									</tbody>
+								</table>
+
+								<div class="box" style="text-align:justify">
+									<b>3.</b> Suppose you have a canvas that is 7 units wide and 7 units high.  It may be useful to imagine that the  canvas is made of graph paper, and is 7 squares wide by 7 squares tall. Suppose that you want a pyramid that is 3 bricks high (that is, n=3).  You'd like the bricks to be as large as possible, but they  should all be of the same size, and they must use a whole number of squares.
+
+									<ul class="padded">
+										<li>Draw the canvas and the pyramid to a reasonable scale and with enough precision so that we can see the coordinates and any gaps that might remain between the top (or right side) of the pyramid and the edge of the canvas.
+										<li>What is the side-length of each brick (how wide and tall is each brick)?
+										<li>How many bricks are in the 0<sup>th</sup> (bottom) row?
+										<li>How many bricks are in the 1<sup>st</sup> (middle) row?
+										<li>How many bricks are in the 2<sup>nd</sup> (top) row?
+										<li>Let the upper-left corner of the canvas be (0,0) with the x and y values increasing as you move right and down, respectively. What are the x- and y-coordinates of the upper left corner of the first brick in the 0<sup>th</sup> row?
+										<li>What are the x- and y-coordinates of the upper left corner of the first brick in the 1<sup>st</sup> row?
+									</ul>
+
+								<!--
+								<b>1.</b> Suppose you have a canvas that is 420 pixels wide and 420 pixels high. You want to evenly tile this canvas with a 7x7 grid of identical rectangles.  What are the required dimensions (width and height) of each rectangle?
+								<br><br>
+
+								<b>2.</b> Suppose that, tragically, you lost all but one of your rectangles.  You decide to make the most of it, placing so it sits on the bottom edge of the canvas, centered it horizontally.  It looks awesome.  What are the (x,y) coordinates for the upper-left corner of that rectangle? (Assume that the upper-left corner of the canvas is (0,0) and the x and y values increase as you move right and down, respectively.)
+								<br><br>
+
+								<b>3.</b> Generalize your answers to questions <b>1</b> and <b>2</b> for a <em>W</em> pixel wide by <em>H</em> pixel high canvas, split into an <em>X</em> by <em>X</em> grid or rectangles.  That is, what are the dimensions of each rectangle, and what would the coordinates be for a single such rectangle centered at the bottom of the canvas.  Your values should be in terms of <em>W</em>, <em>H</em> and <em>X</em>.  Check your formulas by plugging in 420, 560 and 7, and checking that you get the same answers as you had for <b>1</b> and <b>2</b>.
+								<br><br>
+								-->
+
+									<b>4.</b> More generally, suppose your canvas is <tt>width</tt> wide and <tt>width</tt> high, and that your pyramid is <tt>n</tt> bricks tall. What is the side-length <tt>s</tt> of a brick, in terms of <tt>width</tt> and <tt>n</tt>? Use Python's integer division if necessary.
+									<br/><br/>
+
+									<b>5.</b> If our pyramid is <tt>n</tt> bricks tall, then it is also <tt>n</tt> bricks wide at its base. Thus we have that
+									<ul>
+										<li>Row 0 contains n bricks
+										<li>Row 1 (just above row 0) has n-1 bricks
+										<li>Row n-1 (the top row) has 1 brick.
+									</ul>
+									How many bricks does row i contain, in terms of <tt>n</tt> and <tt>i</tt>?
+									<br/><br/>
+
+									<b>6.</b> If our pyramid is <tt>n</tt> bricks tall and each brick has side-length <tt>s</tt>, then
+									<ul>
+										<li>The first brick of row 0 starts at x-coordinate <tt>0</tt>.
+										<li>The first brick of row 1 starts at x-coordinate <tt>s//2</tt>.
+									</ul>
+									What is the x-coordinate of the first brick of row i, in terms of <tt>s</tt> and <tt>i</tt>?
+									<br/><br/>
+
+									<b>7.</b> If your pyramid is <tt>n</tt> bricks tall, our canvas <tt>width</tt> wide and tall, and each brick has side-length <tt>s</tt>, then
+									<ul>
+										<li>The bricks of row 0 have y-coordinate <tt>width-s</tt>.
+										<li>The bricks of row 1 have y-coordinate <tt>width-2s</tt>.
+									</ul>
+									What is the y-coordinate of row i, in terms of <tt>width</tt>, <tt>i</tt>, and <tt>s</tt>?
+									<br/><br/>
+								</div>
+
+								<hr/>                
+								
+								<h2>Monte Carlo!</h2>
+                <p>
+                You probably remember bumping into that peculiar number &pi; = 3.14159265..., right? 
+                It comes up when you're talking about circles and trigonometry, but also appears in a 
+                bunch unexpected places that seem to have little to do with either. As a refresher, Pi 
+                can be defined as the ratio of a circle's circumference (&pi; d) to its diameter (d).  
+                One interesting feature of Pi is that it's an <i>irrational number</i>, meaning it 
+                cannot be expressed as a fraction m/n where both m and n are integers; consequently, 
+                its decimal representation never ends or even repeats.  In fact, we can make a stronger 
+                statement about Pi: it is a <i>transcendental number</i>, which means that there is no 
+                polynomial with rational coefficients of which Pi is a root. But, I digress.
+                </p>
+                
+                <p>
+                Since ancient times, mathematicians have been fascinated with the study of Pi and it's 
+                properties.  Early approximations of Pi, such as 22/7 and 355/113 were accurate to 3 and 
+                7 digits repsectively (the latter approximation was the best known for nearly a 
+                millenium).  Currently, more than the first trillion (a million million) digits are 
+                known. There are many ways to estimate Pi -- for example, you could draw as precise a 
+                circle as you can manage, measure its circumference C and diameter d, and then divide 
+                C/d; this should give you Pi. Alternatively, there is a geometry-based approach due to 
+                Archimedes. We'll investigate a third approach using what is called a <em>Monte Carlo</em> 
+                method.
+                </p>
+                
+                <h3>Monte Carlo Method</h3>
+                <p>
+                When we say we're using a Monte Carlo method, we usually mean we're going to do a bunch of 
+                random trials and observe the fraction of those trials that have a certain property.  
+                In our case, we're going to be throwing darts into a square region, and computing the 
+                fraction of those darts that land within a circle inscribed inside that square.  Each 
+                throw is a trial, and the property we are concerned with is whether or not the dart 
+                landed inside the circle or not.
+                </p>
+                
+                <table>
+                  <tbody>
+                    <tr>
+                      <td width="200px"><b>Describe the Problem:</b></td>
+                      <td>The problem you will solve on your lab is as follows.<br/><br/>
+                        <b>Input:</b> get a number of trials <tt>n</tt> from the user.<br/>
+                        <b>Goal:</b> compute and output an approximation to Pi using a Monte Carlo method with <tt>n</tt> trials.</td>
+                    </tr>
+                    <tr>
+                      <td width="200px"><b>Understand the Problem:</b></td>
+                      <td>More precisely, we'll begin by (theoretically) constructing a target circle inscribed in a square. This is our dart board, and the target circle reaches all the way to the edge of the square. It might look something like the following:<br/><br/>
+                        <p class="centered"><img src="target.jpg" alt="Pi Target"></p>
+                        Next, we'll simulate repeatedly throwing darts at random against the board above (we'll assume that our random throws always hit the square, and are equally likely to land at  any given point inside the square). We then look at the fraction of the darts that land  within the circle out of all those that were thrown.  I claim that if we then multiply this fraction by 4, we should have a good approximation to Pi.  What sort of dark sorcery is this?  Let's take a closer look.<br/><br/>
+                        Suppose you are throwing darts at the square board. Assuming it lands on the board, the chance that any one dart is inside the circle is the ratio of the area of the circle to the area of the square. So, if the circle had area 90 and the square area 100 (not possible, but humor me), you'd have a 90% chance of hitting the circle.
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+                <div class="box">
+                  <b>8.</b> Suppose the circle has a radius of r.  
+                  <ul>
+                    <li>What is the length of one side of the square board in terms of r?
+                    <li>What is the area of the square board in terms of r?  
+                    <li>What is the area of the inscribed circle in terms of r?  
+                    <li>Use these to determine the probability that a randomly thrown dart lands within the circle.  That is, determine the ratio <b>R</b> of the two areas (the circle's area divided by that of the square).  Simplify your expression for <b>R</b> (it will have a Pi in it).  Then give an expression for Pi in terms of <b>R</b> using (simple) algebraic manipulation.  
+                  </ul>
+                </div>
+                
+                <div class="box">   
+                  <b>9.</b> Assume that the drawing of the top left corner of the square board containing the circle described in question 8 is located at the (x = 0, y = 0) pixel, and that the x and y coordinates increase as you go to the right and down, respectively.
+                  <br/><br/>
+                  What is the (x = centerX, y = centerY) coordinate of the center of the circle in terms of radius r?
+                </div>
+                
+                <div class="box">   
+                  <b>10.</b> The distance between any two pixels (x = oneX, y = oneY) and (x = twoX, y = twoY) can be calculated using the Euclidian distance function:
+                  <p class="centered"><img src="euclidian.png" style="height: 2em" alt="distance formula" class="equation"></p>
+                  
+                  Assume you randomly chooes a pixel inside the square located at (x = randX, y = randY).  What is the distance from this pixel to the center of the circle found in question 9?
+                </div>
+
+								<hr/>                
+								
+								<h2>Honor Code</h2>
+								<p> If you followed the Honor Code in this assignment, write the following sentence attesting to the fact at the top of your homework.</p>
+
+								<blockquote >
+								  I affirm that I have adhered to the Honor Code in this assignment.
+								</blockquote>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+	</body>
+</html>

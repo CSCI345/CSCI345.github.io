@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 9 | CSCI 150 (Fall 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Fall 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 150: Lab 9</h1>
+									<p><strong>Scavenger
+									Hunt!<br />Due:
+									10PM
+									on
+									Tuesday,
+									November 19th</strong></p>
+								</header>
+								
+																<p>
+                Congratulations!  You've unlocked part 2!
+                </p>
+                
+                <h2>Part 2 - Decryption</h2>
+                
+                
+                
+                <p>
+                If you haven't already, save the file <a href="code.txt">code.txt</a> to your working folder.  This file contains the instructions for the next part.  Unfortunately, some bozo has encrypted it.  Fortunately, the encryption used by said bozo wasn't too complex, so decryption should be pretty straight forward.  In particular, what we have here is what is known as a cipher shift encoding.  Each letter has been "shifted" forward some number of letters.  For example, if the shift was by 3, then 'a' would become 'd', 'b' would become 'e', etc.  Things that are in this way pushed off the end of the alphabet wrap around, so 'z' would become 'c'.  
+                </p>
+                
+                <p>
+                You're going to write a program called <tt>decrypt.py</tt> to undo the shift.  You could simply try all 26 possible shift values and see if any of them make sense.  One nifty fact: in a typical chunk of English text, the letter 'e' appears more often than any other letter.  So the first thing you'll need to do is run through the file and count how many occurrences there are of letter from a to z.  This requires you to first read in a file (look back at <a href="../Lab05/index.html">Lab05</a> if you need to remind yourself how to do that), and then count characters.  You'll want to create a list of 26 integers, all initially set to 0, to store your letter counts.
+                </p>
+                
+                <p>
+                But how do you tell if a particular character is a letter, rather than a space, a number or some other symbol?  Or tell what letter it is without resorting to 26 tedious if-statements?  Fortunately, every character is associated with an integer.  The two most common encodings are ASCII and Unicode.   In both of these, the letter 'a' corresponds to 97, 'b' to 98, and so on, up until 'z' which maps to 122.  You can get the associated number for a character <tt>c</tt> using the <tt>ord(c)</tt> function.  For example, <tt>ord('b')</tt> will return <tt>98</tt>.  To go in the reverse direction, <tt>chr(x)</tt> generates a string containing the character whose number is <tt>x</tt>.  So <tt>chr(121)</tt> will return <tt>'y'</tt>.  Try printing out the characters for all numbers up to 1000 to see some of the symbols your computer knows about. 
+                </p>
+                
+                <p>
+                Now you've got the pieces needed to count the number of occurences of each character in the encrypted text.  As you read symbols from the file, you'll know you found a letter if the corresponding number lies between 97 and 122 (inclusive).  Count the number of 'a's in slot 0 of your list, 'b's in slot 1, etc.  To simply matters, this test file doesn't include any capital letters (those have their own range of numerical values).  Running through the characters in the file is most easily done using a for loop on the string returned by a file's <tt>read()</tt> function, which returns the string of all characters in the file.  
+                </p>
+                
+                <p>
+                Once you've counted the letter frequencies, your program should find the letter that occurs the most often.  That should be the one that was an 'e' in the original message.  Finally, compute the appropriate shift value and shift the characters by that amount so as to decrypt and print the message.  Note that to do this, latter part, you'll need to scan through the file a second time.  If <tt>f</tt> is your file variable, then using <tt>f.seek(0)</tt> will reset the virtual cursor to the beginning of the file so you can do a second pass.
+                </p>
+                
+                <p>
+                A few things to keep in mind: when you're shifting, be careful about which direction you want to shift.  If 'g' was the most common letter, how do you need to shift the characters?  To actually do the shift, you'll want to convert to an integer, shift by the right amount, and then convert back to a character.  But if the shift moves the integer outside of the [97, 122] range, you'll need to add (or subtract) 26 to wrap back into the range.  If you're careful, mod can make this very clean and concise.  Finally, remember that you only want to apply the shift to letters; the spaces, numbers and other symbols should not be changed.
+                </p>
+                
+                <p>
+                Your final program should print the decoded message to the screen.  You don't need to write a new file with the decoded message.  Remember, there are no capital letters to worry about, and all characters that aren't letters should be left unchanged.  You will not get full credit if you hard-code the shift amount.  The shift should be automatically determined by assuming the most common letter needs to be shifted to an 'e'.  
+                </p>
+                
+                <p>
+                Once you've decrypted the code, you'll have part 3!
+                </p>
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+											  <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PreLab 11 | CSCI 150 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html" class="logo"><strong>CSCI 150</strong>: Introduction to Computer Science (Spring 2019, Oberlin College)</a>
+							</header>
+
+							<section class="main">
+              	<header align="center">
+									<h1>CSCI 150: PreLab 11</h1>
+									<p><strong>Critter
+									Tournament
+									<br />Due
+									December
+									4th
+									at 9am</strong></p>
+								</header>
+
+                <h2>Reading</h2>
+
+                <p>Read these two sci-fi short stories: <a href="http://downlode.org/Etext/nine_billion_names_of_god.html">The Nine Billion Names of God</a> by Arthur C. Clarke, and <a href="http://multivax.com/last_question.html">The Last Question</a> by Isaac Asimov.  
+                </p>
+                
+                <div class="box">
+                <b>1.</b> Did you do the reading?  (Yes or no will suffice.)
+                </div>
+                
+                <p>
+                This week you will write a set of classes that define the behaviour of various animals in a 2-dimensional grid world. Your animals will roam the world, and, should they happen upon another animal, will fight to the death.  We will first describe some particular animals we want you to create, and then ask you to come up with an animal (or more) of your choosing.
+                </p>
+                
+                <h2>Critter Summary</h2>
+                
+                <p>
+                Before you start, let's take a look at this screenshot of the animal world, which is shown below.
+                </p>
+                
+                <img src="safari.jpg" width="100%"></img>
+                
+                <p>
+                What you see here is a grid with mice (labeled 'M'), stones (labeled 'S'), elephants (labeled 'E'), tigers (labeled 'T'), and chameleons (labeled 'C'). This is their initial placement in the grid world.  The <tt>Go</tt> button starts the simulation; 
+                on each round of the simulation, each critter (stones count as critters here, albeit relatively uninteresting ones) is asked which direction it wants to move. On each round, each critter can move <b>one square</b> to the north, south, east, west, or stay at its current location. Critters move around in a world of finite size, but the world is toroidal, as it was in our game of life (going off the end to the right brings you back to the left and vice versa; going off the end to the top brings you back to the bottom and vice versa). 
+                
+                </p>
+                
+                <p>
+                As the simulation runs, animals can collide by moving onto the same location.  When two animals collide, they fight to 
+                the death.  The winning animal survives and the losing animal is removed from the simulation.  The following table 
+                summarizes the possible fighting choices each animal can make and which animal will win in each case.  To help you 
+                remember which beats which, notice that the starting letters and win/loss ratings of "roar, pounce, scratch" correspond to 
+                those of "rock, paper, scissors."  If the animals make the same choice, the winner is chosen at random. 
+                
+                </p>
+                
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr><th rowspan="2">
+                			<td></td>
+                			<th colspan=3 align="center">Critter #2 
+                		</tr>
+                		<tr>
+                
+                			<td></td>
+                			<th> ROAR
+                			<th> POUNCE
+                			<th> SCRATCH
+                		</tr>
+                		<tr>
+                			<th rowspan="3">
+                			Critter #1
+                			<th>ROAR
+                				<td align="center">&nbsp;random winner&nbsp;</td>
+                
+                			<td align="center"> #2 wins</td>
+                			<td align="center"> #1 wins</td>
+                		</tr>
+                		<tr>
+                			<th>POUNCE
+                			<td align="center">#1 wins</td>
+                			<td align="center">&nbsp;random winner&nbsp;</td>
+                
+                			<td align="center">#2 wins</td>
+                		</tr>
+                		<tr>
+                			<th>&nbsp; SCRATCH &nbsp;
+                			<td align="center">#2 wins</td>
+                			<td align="center">#1 wins</td>
+                
+                			<td align="center">&nbsp;random winner&nbsp;</td>
+                		</tr>
+                
+                </table>
+                </center>
+                
+                
+                <h2>Critter Behaviour</h2>
+                
+                <p>
+                Each critter you implement must have some specific state and functionality defined. In particular, each critter will implement the following methods, amongst other things:  
+                </p>
+                
+              	<pre><code>
+    def fight(self, oppInfo):
+    def getColor(self):
+    def getMove(self, info):
+    def getChar(self):
+                </code></pre>
+                
+                <p>
+                For example, a <tt>Stone</tt> may be implemented with the following functionality, where <tt>ROAR</tt> and <tt>CENTER</tt> are defined critter constants: 
+                
+                </p>
+                
+                <pre><code>
+    import critter
+    import color    
+    
+    class Stone(critter.Critter):
+    
+        def fight(self, oppInfo):
+            return critter.ROAR  # Stones always ROAR, obvi.
+        
+        def getColor(self):
+            return color.GRAY    # Stones are drawn GRAY
+        
+        def getMove(self, info):
+            return critter.CENTER  # Stones never move
+    
+        def getChar(self):
+            return 'S'  # Displayed with an 'S'
+                </code></pre>
+                
+                
+                
+                <h2>Critters To Implement</h2>
+                
+                <p>
+                In your lab you will be implementing the following five critters, which must have the following behaviour:
+                </p>
+                
+                <h3>Mouse</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;always <tt>SCRATCH</tt></td>
+                
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;alternates between <tt>EAST</tt> and <tt>SOUTH</tt> in a zigzag pattern (first <tt>EAST</tt>, then <tt>SOUTH</tt>, then <tt>EAST</tt>, then <tt>SOUTH</tt>,...)</td>
+                
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'M'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                 
+                
+                
+                <h3>Tiger</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;always <tt>ROAR</tt></td>
+                		</tr>
+                
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;moves 3 steps in a random direction from <tt>NORTH</tt>, <tt>SOUTH</tt>, <tt>EAST</tt>, or <tt>WEST</tt>, then chooses a new random direction from the same four and repeats</td>
+                		</tr>
+                
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'T'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <h3>Elephant</h3>
+                
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;if opponent is a Tiger ('T'), then <tt>ROAR</tt>; otherwise <tt>POUNCE</tt></td>
+                		</tr>
+                
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;first go <tt>SOUTH</tt> <tt>steps</tt> times, then go <tt>WEST</tt> <tt>steps</tt> times, then go <tt>NORTH</tt> <tt>steps</tt> times, then go <tt>EAST</tt> <tt>steps</tt> times (a clockwise square pattern), then repeats</td>
+                
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;'E'</td>
+                		</tr>
+                	</table>
+                </center>
+                </p>
+                
+                <h3>The Chameleon</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>the strategy that beats the most used strategy against the chameleons so far (not just this one chameleon)</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;color</b></td>
+                			<td>the color used by this particular chameleon's last opponent</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;if the chameleons have lost the majority of their fights so far, then use avoidance. Otherwise, move towards opponents. </td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>'C'</td>
+                		</tr>
+                	</table>
+                </center>
+                <h3>Your Own Critter</h3>
+                <p>
+                <center>
+                    <table border=1 cellpadding=2 cellspacing=0 width="80%">
+                		<tr>
+                			<td width="30%"><b>&nbsp;fighting behaviour</b></td>
+                			<td>&nbsp;you decide</tt></td>
+                		</tr>
+                		<tr>
+                
+                			<td><b>&nbsp;movement behaviour</b></td>
+                			<td>&nbsp;you decide</td>
+                		</tr>
+                		<tr>
+                			<td><b>&nbsp;character</b></td>
+                			<td>&nbsp;you decide</td>
+                		</tr>
+                
+                	</table>
+                </center>
+                </p>
+                
+                <p>
+                You will decide the behaviour of your own critter.  Your critter should be named after yourself.  Please use your first name followed by your last initial.  For example, my critter would be named <tt>CynthiaT</tt>.  
+                </p>
+                
+                <h2>What Should Your Critter Do?</h2>
+                
+                <p>
+                Part of your lab grade will be based upon writing creative and non-trivial behaviour for your own critter.  The following are  
+                some guidelines and hints about how to write an interesting critter. 
+                </p>
+                
+                <p>
+                When a critter moves, it has access to some important but limited information that it may wish to use to guide its movement behaviour.
+                For example, it has access to its current <tt>x</tt> and <tt>y</tt> coordinates, as well as the width and height of the grid world.
+                It can also find out what kind of critters are to its east, west, north, south, north-east, north-west, south-east, or south-west if there are any critter there at all. Note that you can see diagonally, but you cannot move diagonally (in one step).
+                </p>
+                
+                
+                <div class="box">
+                
+                <b>2.</b> A non-confrontational (or introverted) critter may always want to move away from other critters.  If such a critter sees another critter to the north it shouldn't move north, but additionally, south is probably safer than either east or west.  Unless of course there is another critter to the southwest, in which case maybe east is the best bet.  <br/><br/>
+                
+                One could imagine (unpleasantly) making a couple hundred if-statements to handle every possible configuration of neighbors.  But we'd like to be a bit smarter (and more concise).  One idea is this: make a variable for each of the four cardinal directions representing the "danger score" of moving in that direction, plus a danger score for not moving at all.  For each neighbor you see, increase the danger scores in a way that represents the threat posed by that neighbor.  Then pick the direction with the lowest danger score.    <br><br>
+                
+                Give <b>pseudocode</b> that determines where such a critter should move based on its neighbours to the north, south, east, west, north-east, north-west, south-east, and south-west. In generating danger scores, the precise numbers you choose are up to you, but try to make sure they make lead to reasonable choices in various situations.
+                <!--
+                <br><br>
+                
+                
+                <b>3)</b> What if the critter only wants to avoid critters of a different type than itself? How would you change your pseudocode from question <b>2</b>?
+                -->
+                </div>
+                
+                <p>
+                When a critter fights another critter (by both moving into the same square), you can find out the display character of the critter you are fighting against and adjust your strategy accordingly.
+                </p>
+                
+                <div class="box">
+                
+                <b>3.</b> If you are fighting a <tt>Mouse</tt>, what fighting behaviour should you have in order to always win?  How about against an <tt>Elephant</tt>?  Given the strategy for the <tt>Chameleon</tt>, what would be a reasonable attack to use against the <tt>Chameleon</tt> if you knew there were equal numbers of Mouse, Tiger and Elephant critters in the arena.  
+                
+                </div>
+                
+                <p>
+                Your critter can use any character you like as its display character. In fact, critters are asked what display character to use on each round of the simulation, so you can have a critter that displays itself differently over time.  
+                </p>
+                
+                <p>
+                Your critter does not have to play a fixed strategy against each type of critter; you can have a critter that learns its strategy over time, based on its previous fighting results. For example, if critter has fought with a <tt>Tiger</tt> three times, and the <tt>Tiger</tt> always Pounces, then the next time it encounters a <tt>Tiger</tt>, it would seem that Scratching may be a good fighting strategy.
+                </p>
+                
+                <div class="box">
+                
+                
+                <b>4.</b> Describe the behavior of your own critter by filling out the "you decide" entries in the <b>Your Own Critter</b> table further up in this prelab. Try to make it interesting without getting overly ambitious (there is only so much information available to you).  Don't specify actions that go beyond the scope of what a critter is allowed to do -- long-range attacks, teleportation, and invulnerability are all no-nos.
+                
+                </div>
+                
+                <br>
+                
+                 
+                
+                <h2>Honor Code</h2>
+                
+                <p> If you followed the Honor Code in this assignment, write the following sentence attesting to the fact at the top of your homework.</p>
+                
+                <blockquote class="honor">
+                  <p class="centered">I affirm that I have adhered to the Honor Code in this assignment.
+                  </p>
+                </blockquote>
+
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../announce.html">Announcements</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+                                                <li><a href="../../Assignments/Questionnaire/index.html">Questionnaire (Due 2/6)</a></li>
+                                                <li><a href="../../Labs/Lab01/index.html">Lab 1 (2/1 and 2/2)</a></li>
+                                                <li><a href="../../Labs/Lab02/index.html">Lab 2 (2/8 and 2/9)</a></li>
+                                                <li><a href="../../Labs/Lab03/index.html">Lab 3 (2/15 and 2/16)</a></li>
+                                                <li><a href="../../Labs/Lab04/index.html">Lab 4 (2/22 and 2/23)</a></li>
+                                                <li><a href="../../Labs/Lab05/index.html">Lab 5 (3/1 and 3/2)</a></li>
+                                                <li><a href="../../Labs/Lab06/index.html">Lab 6 (3/15 and 3/16)</a></li>
+                                                <li><a href="../../Labs/Lab07/index.html">Lab 7 (3/29 and 3/30)</a></li>
+                                                <li><a href="../../Labs/Lab08/index.html">Lab 8 (4/5 and 4/6)</a></li>
+                                                <li><a href="../../Labs/Lab09/index.html">Lab 9 (4/12 and 4/13)</a></li>
+                                                <li><a href="../../Labs/Lab10/index.html">Lab 10 (4/19 and 4/20)</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<ul class="contact">
+										<li class="fa-envelope-o">adam DOT eck AT oberlin DOT edu</li>
+										<li class="fa-home">
+                                            King 223D
+                                            <br/><br/>
+                                            <b>Office Hours</b>: <br/>
+                                            M 1:30-3:00 PM (King 223D) <br/>
+                                            R 10:00-11:30 AM (King 135) <br/>
+                                            F 3:30-4:30 PM (<a href="https://www.google.com/maps/place/Local+Coffee+%26+Tea/@41.2909657,-82.217121,15z/data=!4m2!3m1!1s0x0:0xfa5cce842aae63b1?sa=X&ved=0ahUKEwjmx_HJutvRAhVs5oMKHaI6DTcQ_BIIcjAK">The Local</a>)
+										</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2017. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+	</body>
+</html>

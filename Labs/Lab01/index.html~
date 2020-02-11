@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 01 | CSCI 345 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html"
+								class="logo"><strong>CSCI
+								345</strong>:
+								Computers
+								and
+								the
+								Physical
+								World (Spring 2019, Oberlin Collegel)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 345: Lab 1</h1>
+									<p><strong>Information
+									Visualization<br />Due:
+									10PM
+									on
+									Monday,
+									February 17th
+									</strong></p>
+								</header>
+								
+								<p>In
+								this
+								lab,
+								you
+								should
+								learn:</p>
+                <ul>
+                	<li>How to visualize datasets</li>
+                 </ul>
+
+
+		<p>To complete this lab, you will need:
+		  <ul>
+		    <li>A computer.
+		    <li>A dataset.
+		      </ul>
+ 		  <section class="main">
+		    <h2>Part 0 - Github</h2>
+		    All your code for this class should be stored in
+		    Github repositories that are part of the CS345
+		    github organization.  This will give me access to
+		    your code, and give you access to version
+		    control.  To create a repository for this
+		    assignment, <a href="https://classroom.github.com/a/gib9NXo_">click here</a>.<p>
+		      
+		    
+                  <h2>Part 1 - Look at some visualizations</h2>
+In this lab, you will create a visualization of some  dataset.  Here are
+		  examples of visualizations that I particularly like:
+		  <ul>
+		  <li><a href="https://fitzlab.shinyapps.io/cityapp/">climate change map</a>
+		  <li> <a href="https://www.nytimes.com/interactive/2018/08/30/climate/how-much-hotter-is-your-hometown.html">interactive
+		      new york times feature on climate change</a>
+		 <li><a href="https://showyourstripes.info/">visualization
+		     of temperatures over time</a>
+		 <li><a href="http://googletrends.github.io/iframe-scaffolder/#/view?urls=Thanksgiving%202015%7Chttps:%252F%252Fgoogledataorg.cartodb.com%252Fu%252Fgoogledata%252Fviz%252Fbf595f4c-7381-11e5-9ec5-42010a14800c%252Fembed_map&active=0&sharing=1&autoplay=0&loop=1&layout=narrative&theme=red&title=A%20day%20in%20the%20life:%20US%20Thanksgiving%20on%20Google%20Flights&description=The%20day%20before%20Thanksgiving%202015%20shown%20in%20US%20domestic%20and%20international%20air%20travel%20booked%20with%20Google%20Flights">flights
+		     on Thanksgiving</a>
+		 <li><a href="http://hint.fm/wind/">US wind map</a>
+		  <li><a href="https://podio.com/site/creative-routines">routines
+		      of famous creative people</a>
+		    <li><a href="https://www.bbc.com/news/blogs-trending-48278772">Women
+			versus men talking</a>
+		    </ul>
+
+
+		  <section class="main">
+                <h2>Part 2 - Download a dataset</h2>
+Find a dataset to
+		visualize. <a href="https://datahub.io/collections">This
+		  website</a> has a nice selection, but you should
+		      also be able to find datasets on anything you
+		      find interesting using google.<p>
+		
+              </section>
+
+ <section class="main">
+                <h2>Part 3 - Write a visualization</h2>
+
+Write a program that visualizes your dataset.  Your visualization
+		should be interactive in some way: the user should
+		either be able to select parameters in the beginning,
+		or they should be able to browse/explore/change the
+		visualization while it is going.  Your visualization
+		should not depend on particular data values - in other
+		words, if the data values in the dataset you are using
+		were replaced with other values, your visualization
+		should still work.  (i.e. it should work with any file
+		that has data in the same format as the file you're
+		using).<p><p>
+
+		You can use any language to write your program, and
+		any libraries or APIs you wish.  If you decide to use
+		python, feel free to use the drawing libraries from CS
+		150
+		(available <a href="http://www.cs.oberlin.edu/~ctaylor/classes/150F19/Labs/Lab03/index.html">here</a>)
+		or use the tkinter module directly.  You may also
+		want to
+		use <a href="https://pandas.pydata.org/">PANDAS</a>
+		or <a href="https://plot.ly/python/">plotly</a>. <p><p>
+
+     You will need to programatically read from your dataset file.
+     Fortunately, most languages have libraries that make this easy.
+     For python, there are libraries for reading
+     from <a href="https://docs.python.org/3/library/csv.html">csv</a>,
+     <a href="https://docs.python.org/3/library/json.html">json</a>,
+     and <a href="https://www.geeksforgeeks.org/xml-parsing-python/">xml</a>.
+     Please feel free to google for tutorials, and post any good ones
+     you find on piazza.
+		
+              </section>
+         
+	  
+          <section class="main">
+                <h2>Handin</h2>
+                
+                <p> You will submit your assignment by posting a
+                comment on the piazza thread for lab 1.  Your post
+                should include a link to the a video of you demoing
+                your interactive visualization, and a link to a github repository that
+                contains your code.  Your one to five minute video should clearly
+                show your screen as you demonstrate your program, and
+                have either you narrating an explanation, or added
+                captions to explain how your program works.  I
+                recommend using Quicktime if you have a mac,
+                or <a href="https://betanews.com/2019/01/14/windows-10-screen-recorder-ultility/">the
+                game recorder</a> in Windows.<p>
+                </p>
+                
+                <hr/>
+                <small>C. Taylor</small>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+                        <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

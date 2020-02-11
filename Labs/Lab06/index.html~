@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 06 | CSCI 345 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html"
+								class="logo"><strong>CSCI
+								345</strong>:
+								Computers
+								and
+								the
+								Physical
+								World (Spring 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 345: Lab 6</h1>
+									<p><strong>Analog
+									Inputs
+									and
+									Outputs<br />Due:
+									10PM
+									on
+									Monday,
+									</strong></p>
+								</header>
+								
+								<p>In
+								this
+								lab,
+								you
+								should
+								learn:</p>
+                <ul>
+                	<li>How to use analog read and write.</li>
+                   </ul>
+
+
+		<p>To complete this lab, you will need:
+		  <ul>
+		    <li>A computer.
+		    <li>An arduino.
+		    <li>A USB cable to connect your arduino to your computer.
+		    <li>A photoresister.
+		    <li>An RGB LED (this is the LED with 4 legs).
+		    <li>A regular LED.
+		    <li>Three 270Ω resistors, a 330Ω resistor, and a
+		    10 kΩ resistor (You could also just use 4 330s or
+		    4 270s).
+		    <li>A breadboard.
+		    <li>Wires.
+		      </ul>
+ 	      <section class="main">
+                  <h2>Part 1 - Using analog write.</h2>
+
+Previous to this we have only been using digital signals for our
+		  inputs and outputs.  This means things have either
+		  been on/high/1 or off/low/0.  However, electricity
+		  can have lots of different voltages, and we can use
+		  that voltage in semantically meaningful ways.  
+		  
+First, follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds/">this guide</a>
+		    to use analog output to change the color of an
+		    RGB LED.<p>
+
+              <section class="main">
+                <h2>Part 2 - Using analog read.</h2>
+                
+Follow <a href="https://learn.sparkfun.com/tutorials/sik-experiment-guide-for-arduino---v32/experiment-6-reading-a-photoresistor">
+		  this guide</a> to use analog read to get data from
+		  a photoresistor.<p>
+          </section>
+          
+          <section class="main">
+                <h2>Part 3 - Adding sound</h2>
+
+Follow <a href="https://learn.adafruit.com/adafruit-arduino-lesson-10-making-sounds/overview">this
+		  tutorial</a> to make a musical instrument that takes
+		  input from the photoresistor, and uses it to make sounds. <p>
+     
+		
+          </section>
+	  <section class="main">
+          <h2>Part 4 - Get Creative</h3>
+Take what you learned in the previous sections and use it to make a
+program that takes in input from the photoresistor, and outputs it as
+both light and sound.  Your program must use at least the piezo buzzer
+and multiple LEDs, including at least one RGB LED.<p>
+	  </section>
+          <section class="main">
+                <h2>Handin</h2>
+                
+                <p> You will submit your assignment by posting a
+                comment on the piazza thread for lab 6.  Your post
+                should include a link to the a video of you demoing
+                your program, and a link to a github repository that
+                contains your arduino code.
+                </p>
+                
+                <hr/>
+                <small>C. Taylor</small>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+                        <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>

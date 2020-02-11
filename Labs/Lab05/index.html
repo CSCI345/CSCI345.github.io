@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lab 05 | CSCI 345 (Spring 2019) | Oberlin College</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../../../assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+							<header id="header">
+								<a href="../../index.html"
+								class="logo"><strong>CSCI
+								345</strong>:
+								Computers
+								and
+								the
+								Physical
+								World (Spring 2019, Oberlin College)</a>
+							</header>
+							
+							<section class="main">
+                <header align="center">
+									<h1>CSCI 345: Lab 5</h1>
+									<p><strong>Inputs
+									and
+									Outputs<br />Due:
+									10PM
+									on
+									Monday,
+									</strong></p>
+								</header>
+								
+								<p>In
+								this
+								lab,
+								you
+								should
+								learn:</p>
+                <ul>
+                	<li>How to recieve input from a button</li>
+                	<li>How to debounce a button</li>
+			<li>How to write to a LCD display</li>
+                 </ul>
+
+
+		<p>To complete this lab, you will need:
+		  <ul>
+		    <li>A computer.
+		    <li>An arduino.
+		    <li>A USB cable to connect your arduino to your computer.
+		    <li>A push button.
+		    <li>A LCD display.
+		    <li>A potentiometer.
+		    <li>A 220Ω resistor and a 10 kΩ resistor.
+		    <li>A breadboard.
+		    <li>Wires.
+		      </ul>
+ 	      <section class="main">
+                  <h2>Part 1 - Receiving input from a button.</h2>
+
+Follow <a href="https://www.arduino.cc/en/tutorial/button">this guide</a>
+		    to have your arduino read input from a button.  After
+		    this, your onboard LED should blink when you press
+		  the button.<p><p>
+
+		  Note: The buttons that come with your kit are
+		  slightly confusing, as they have 4 pins but actually
+		  only electrical connections.  A diagram of how they
+		  work can be
+		  found <a href="https://learn.adafruit.com/adafruit-arduino-lesson-6-digital-inputs/push-switches">here</a>.
+</section>
+		   	      <section class="main">
+                  <h2>Part 2 - Serial monitor.</h2>
+
+		  It's extremely helpful to be able to have the
+		  arduino print to a computer for debugging purposes.
+		  Follow <a href="https://create.arduino.cc/projecthub/glowascii/serial-monitor-arduino-basics-399eb6">this
+		  tutorial</a> to find out how to use the serial
+		  monitor to communicate with your computer from the
+		  arduino.  You should be able to just add the serial
+		  monitor parts of the code to your existing sketch if
+		  you don't want to rewire anything.<p><p>
+
+			      </section>
+	
+
+              <section class="main">
+                <h2>Part 3 - Setting up an LCD display</h2>
+                
+Follow <a href="http://www.circuitbasics.com/how-to-set-up-an-lcd-display-on-an-arduino/">
+		  this guide</a> to set up an LCD screen with your
+		  arduino.  You will want both the LCD screen and the
+		  button attached to your arduino for the next steps,
+		so keep that in mind as you are setting up.<p><p>
+
+		  NOTE:  The potentiometers that came with your kits
+		  may be wired slightly differently from the one in
+		  the tutorial.  Check if the middle pin is on the
+		  same side or opposite side as the other two pins,
+		  and wire your circuit accordingly.
+          </section>
+          
+          <section class="main">
+                <h2>Part 4 - Debouncing a button</h2>
+
+Next, set up your button with the LCD screen, and write code to have
+		the LCD screen display the number of times the button
+		is pressed.  You may notice that the button registers
+		multiple button presses when you have only pressed
+		this once.  To fix this, you will need to write code
+		to <i>debounce</i> the button.  You can do that by
+		following <a href="https://www.arduino.cc/en/Tutorial/Debounce">this tutorial</a>. <p>
+		
+              </section>
+
+ <section class="main">
+                <h2>Part 5 - Button games</h2>
+
+Now you will take what you learned in the previous parts of the lab,
+		and use it to design a game or program of your
+		choosing. Your program must use both the LCD display,
+		and one or more buttons.   <p><p>
+
+     Some example programs:     <ul>
+       <li>Have the user guess a random number by pressing the button
+	 the correct number of times.
+	 <li>Have the user navigate through a
+	 choose-your-own-adventure type game, selecting options by
+	 pressing multiple buttons, or pressing the button a certain
+	   number of times.
+	<li>Have users compete to see who can press a button more
+	  times in a set amount of time.
+	<li>Have the user tap in a message in Morse code and display
+	  the message in english on the LCD display.
+        <li>Have the user navigate a maze by pushing different buttons
+          for forward, backwards, up and down.
+</ul>
+     
+		
+              </section>
+         
+	  
+          <section class="main">
+                <h2>Handin</h2>
+                
+                <p> You will submit your assignment by posting a
+                comment on the piazza thread for lab 5.  Your post
+                should include a link to the a video of you demoing
+                your program, and a link to a github repository that
+                contains your arduino code.
+                </p>
+                
+                <hr/>
+                <small>C. Taylor</small>
+
+							</section>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Course Info</a></li>
+										<li><a href="../../schedule.html">Schedule</a></li>
+										<li><a href="../../syllabus.html">Syllabus</a></li>
+										<li><a href="../../handouts.html">Tips and Handouts</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+                        <div id="labs"/>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<div id="contact"/>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2019. Adam Eck. All rights reserved. <br/> Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../../../assets/js/jquery.min.js"></script>
+			<script src="../../../../assets/js/skel.min.js"></script>
+			<script src="../../../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../../../assets/js/main.js"></script>
+
+                        <script>
+                                $(function(){
+                                        $("#labs").load("../../labs.html");
+                                });
+                        </script>
+                        <script>
+                                $(function(){
+                                        $("#contact").load("../../contact.html");
+                                });
+                        </script>
+
+	</body>
+</html>
